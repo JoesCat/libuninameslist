@@ -1,0 +1,11 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: libuninameslist
+Description: Unicode Names and Annotations List Library
+Version: 0.3.20130423
+Libs: -L${libdir} -luninameslist
+Cflags: -I${includedir}
+
