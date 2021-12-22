@@ -53,7 +53,7 @@ static int test(long val, const char *result, const char *expect) {
 	return( 1 );
     } else if ( expect==NULL ) {
 	printf("\n  ret=\"%s\"\n  exp=NULL.\n",result);
-	return( 1 );
+	return( 0 );
     }
 
     printf("\n  ret=\"%s\"\n  exp=\"%s\"\n",result,expect);
