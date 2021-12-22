@@ -529,8 +529,7 @@ static const struct unicode_nameannot * const nullnullarray[] = {
 	nullarray, nullarray, nullarray, nullarray, nullarray, nullarray, nullarray, nullarray2
 };
 
-UN_DLL_EXPORT
-const struct unicode_block UnicodeBlock[] = {
+const struct UN_DLL_EXPORT unicode_block UnicodeBlock[] = {
 	{ 0x0, 0x7f, "C0 Controls and Basic Latin (Basic Latin)" },
 	{ 0x80, 0xff, "C1 Controls and Latin-1 Supplement (Latin-1 Supplement)" },
 	{ 0x100, 0x17f, "Latin Extended-A" },
@@ -51128,8 +51127,7 @@ static const struct unicode_nameannot * const una_0E[] = {
 	nullarray2
 };
 
-UN_DLL_EXPORT
-const struct unicode_nameannot * const *const UnicodeNameAnnot[] = {
+const struct UN_DLL_EXPORT unicode_nameannot * const *const UnicodeNameAnnot[] = {
 	una_00,
 	una_01,
 	una_02,
