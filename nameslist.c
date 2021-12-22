@@ -51127,7 +51127,7 @@ static const struct unicode_nameannot * const una_0E[] = {
 	nullarray2
 };
 
-const struct UN_DLL_EXPORT unicode_nameannot * const *const UnicodeNameAnnot[] = {
+const struct unicode_nameannot * const *const UnicodeNameAnnot[] = {
 	una_00,
 	una_01,
 	una_02,
