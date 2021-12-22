@@ -1,6 +1,6 @@
 /* Generic helper definitions for shared library support */
 /* as explained in - https://gcc.gnu.org/wiki/Visibility */
-#if defined _WIN32 || defined __CYGWIN__
+#if defined (_WIN32) || defined (__CYGWIN__) || (_WIN64) || defined (__CYGWIN64__)
   #define UN_DLL_IMPORT __declspec(dllimport)
   #define UN_DLL_EXPORT __declspec(dllexport)
   #define UN_DLL_LOCAL
