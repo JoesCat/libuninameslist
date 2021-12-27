@@ -6,6 +6,10 @@
     #define UN_DLL_IMPORT __declspec(dllimport)
     #define UN_DLL_EXPORT __declspec(dllexport)
     #define UN_DLL_LOCAL
+  #else
+    #define UN_DLL_IMPORT
+    #define UN_DLL_EXPORT
+    #define UN_DLL_LOCAL
   #endif
 #else
   #if __GNUC__ >= 4
