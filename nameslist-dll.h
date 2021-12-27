@@ -1,11 +1,12 @@
 /* Generic helper definitions for shared library support */
 /* as explained in - https://gcc.gnu.org/wiki/Visibility */
 /* Added cludge to anticipate CLANG and MSYS2 on Windows */
-/* #if !defined (__CLANG__) && ( defined (_WIN32) || defined (__CYGWIN__) || (_WIN64) || defined (__CYGWIN64__) ) */
-#if 0
-  #define UN_DLL_IMPORT __declspec(dllimport)
-  #define UN_DLL_EXPORT __declspec(dllexport)
-  #define UN_DLL_LOCAL
+#if defined (_WIN32) || defined (__CYGWIN__) || (_WIN64) || defined (__CYGWIN64__)
+  #ifndef __clang__
+    #define UN_DLL_IMPORT __declspec(dllimport)
+    #define UN_DLL_EXPORT __declspec(dllexport)
+    #define UN_DLL_LOCAL
+  #endif
 #else
   #if __GNUC__ >= 4
     #define UN_DLL_IMPORT __attribute__ ((visibility ("default")))

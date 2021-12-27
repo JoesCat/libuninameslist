@@ -73,7 +73,7 @@ jobs:
           autoreconf -i
           automake
       - name: Choose configure
-        run: ./configure
+        run: ./configure --enable-shared --enable-static --enable-frenchlib
       - name: Make library
         run: make
       - name: Test library
