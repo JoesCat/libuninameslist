@@ -49,6 +49,7 @@ jobs:
   windows:
     runs-on: windows-latest
     strategy:
+      fail-fast: false
       matrix:
         include: [
           { msystem: MINGW64, toolchain: mingw-w64-x86_64-toolchain },
