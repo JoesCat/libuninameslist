@@ -143,7 +143,8 @@ const char *uniNamesList_names2anUFR(unsigned long uni) {
 	return( NULL );
 }
 
-static const struct UN_DLL_LOCAL unicode_nameannot nullarrayFR[] = {
+UN_DLL_LOCAL
+static const struct unicode_nameannot nullarrayFR[] = {
 	{ NULL, NULL }, { NULL, NULL }, { NULL, NULL }, { NULL, NULL },
 	{ NULL, NULL }, { NULL, NULL }, { NULL, NULL }, { NULL, NULL },
 	{ NULL, NULL }, { NULL, NULL }, { NULL, NULL }, { NULL, NULL },
@@ -211,7 +212,8 @@ static const struct UN_DLL_LOCAL unicode_nameannot nullarrayFR[] = {
 	{ NULL, NULL }, { NULL, NULL }, { NULL, NULL }, { NULL, NULL }
 };
 
-static const struct UN_DLL_LOCAL unicode_nameannot nullarray2FR[] = {
+UN_DLL_LOCAL
+static const struct unicode_nameannot nullarray2FR[] = {
 	{ NULL, NULL }, { NULL, NULL }, { NULL, NULL }, { NULL, NULL },
 	{ NULL, NULL }, { NULL, NULL }, { NULL, NULL }, { NULL, NULL },
 	{ NULL, NULL }, { NULL, NULL }, { NULL, NULL }, { NULL, NULL },
@@ -281,7 +283,8 @@ static const struct UN_DLL_LOCAL unicode_nameannot nullarray2FR[] = {
 	{ NULL, "	* on est assuré que la valeur ?FFFF n'est en aucune façon un caractère Unicode" },
 };
 
-static const struct UN_DLL_LOCAL unicode_nameannot * const nullnullarrayFR[] = {
+UN_DLL_LOCAL
+static const struct unicode_nameannot * const nullnullarrayFR[] = {
 	nullarrayFR, nullarrayFR, nullarrayFR, nullarrayFR, nullarrayFR, nullarrayFR, nullarrayFR, nullarrayFR,
 	nullarrayFR, nullarrayFR, nullarrayFR, nullarrayFR, nullarrayFR, nullarrayFR, nullarrayFR, nullarrayFR,
 	nullarrayFR, nullarrayFR, nullarrayFR, nullarrayFR, nullarrayFR, nullarrayFR, nullarrayFR, nullarrayFR,
@@ -317,7 +320,8 @@ static const struct UN_DLL_LOCAL unicode_nameannot * const nullnullarrayFR[] = {
 	nullarrayFR, nullarrayFR, nullarrayFR, nullarrayFR, nullarrayFR, nullarrayFR, nullarrayFR, nullarray2FR
 };
 
-const struct UN_DLL_EXPORT unicode_block UnicodeBlockFR[] = {
+UN_DLL_EXPORT
+const struct unicode_block UnicodeBlockFR[] = {
 	{ 0x0, 0x7f, "Commandes C0 et latin de base (Latin de base)" },
 	{ 0x80, 0xff, "Commandes C1 et supplément Latin-1 (Supplément Latin-1)" },
 	{ 0x100, 0x17f, "Latin étendu A" },
@@ -50084,6 +50088,7 @@ static const struct unicode_nameannot unaFR_0E_01[] = {
 /* E01FF */ { NULL,NULL}
 };
 
+UN_DLL_LOCAL
 static const struct unicode_nameannot * const unaFR_00[] = {
 	unaFR_00_00,
 	unaFR_00_01,
@@ -50343,6 +50348,7 @@ static const struct unicode_nameannot * const unaFR_00[] = {
 	unaFR_00_FF
 };
 
+UN_DLL_LOCAL
 static const struct unicode_nameannot * const unaFR_01[] = {
 	unaFR_01_00,
 	unaFR_01_01,
@@ -50602,6 +50608,7 @@ static const struct unicode_nameannot * const unaFR_01[] = {
 	nullarray2FR
 };
 
+UN_DLL_LOCAL
 static const struct unicode_nameannot * const unaFR_02[] = {
 	nullarrayFR,
 	nullarrayFR,
@@ -51120,6 +51127,7 @@ static const struct unicode_nameannot * const unaFR_0E[] = {
 	nullarray2FR
 };
 
+UN_DLL_EXPORT
 const struct  UN_DLL_EXPORT unicode_nameannot * const *const UnicodeNameAnnotFR[] = {
 	unaFR_00,
 	unaFR_01,
