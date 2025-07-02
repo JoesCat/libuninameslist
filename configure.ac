@@ -132,7 +132,7 @@ AC_ARG_ENABLE([pylib],
 if test x$enable_pylib = xyes ; then
     AC_ARG_VAR([PYTHON],[Python to use to build the python wheel.])
     if test x"${PYTHON}" = x; then
-        PYTHON=python
+        PYTHON=python3
     fi
     AC_CHECK_PROG([PYTHONFOUND],[${PYTHON}],[yes])
     if test x"${PYTHONFOUND}" != xyes; then

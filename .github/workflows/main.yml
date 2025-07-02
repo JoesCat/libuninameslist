@@ -40,12 +40,6 @@ jobs:
       - name: Create configure
         run: |
           brew install autoconf automake libtool gcc python-setuptools
-          python3 --version
-          pip3 --version
-          pip3 install --upgrade pip
-          pip3 install setuptools
-          python3 setup.py install
-          python3 import setuptools
           autoreconf -i
           automake
       - name: Choose configure
