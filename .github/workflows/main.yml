@@ -7,7 +7,6 @@ jobs:
     env:
       PYTHON: python3
     strategy:
-      fail-fast: false
       matrix:
         choiceL: [--disable-silent-rules, --enable-frenchlib, --enable-pylib]
     steps:
@@ -32,7 +31,6 @@ jobs:
     env:
       PYTHON: python3
     strategy:
-      fail-fast: false
       matrix:
         choiceM: [--disable-silent-rules, --enable-frenchlib, --enable-pylib]
     steps:
@@ -50,32 +48,33 @@ jobs:
         run: make check
   windows:
     runs-on: windows-latest
+    env:
+      PYTHON: python3
     strategy:
-      fail-fast: false
       matrix:
         include: [
-          { msystem: MINGW64, toolchain: mingw-w64-x86_64-toolchain },
-          { msystem: MINGW32, toolchain: mingw-w64-i686-toolchain },
-          { msystem: UCRT64, toolchain: mingw-w64-ucrt-x86_64-toolchain },
-          { msystem: CLANG64, toolchain: mingw-w64-clang-x86_64-toolchain },
+          { msystem: MINGW64, tools: mingw-w64-x86_64 },
+          { msystem: UCRT64, tools: mingw-w64-ucrt-x86_64 },
+          { msystem: CLANG64, tools: mingw-w64-clang-x86_64 },
       ]
     name: ${{ matrix.msystem }}
     defaults:
       run:
         shell: msys2 {0}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: msys2/setup-msys2@v2
         with:
           msystem: ${{ matrix.msystem }}
           update: true
-          install: autotools base-devel git ${{ matrix.toolchain }}
+          install: autotools base-devel git ${{matrix.tools}}-toolchain ${{matrix.tools}}-python-setuptools ${{matrix.tools}}-python-pip-tools ${{matrix.tools}}-python-wheel
       - name: Create configure
         run: |
+          python --version
           autoreconf -i
           automake
       - name: Choose configure
-        run: ./configure
+        run: ./configure --enable-pylib
       - name: Make library
         run: make
       - name: Test library

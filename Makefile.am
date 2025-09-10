@@ -32,7 +32,8 @@ buildnameslist_SOURCES = buildnameslist.c buildnameslist.h
 
 nodist_EXTRA_DATA = NamesList.txt ListeDesNoms.txt buildnameslist.h .git .github .appveyor.yml .travis.yml
 
-DISTCLEANFILES = libuninameslist.pc
+DISTCLEANFILES = libuninameslist.pc install-sh ltmain.sh config.sub \
+	missing config.guess ar-lib compile test-driver depcomp
 DISTCHECK_CONFIGURE_FLAGS = --enable-frenchlib --enable-pylib --disable-silent-rules
 
 lib_LTLIBRARIES =
@@ -72,7 +73,7 @@ libtool: $(LIBTOOL_DEPS)
 	$(SHELL) ./config.status libtool
 
 NamesList.txt:
-	$(WGET) "https://www.unicode.org/Public/UCD/latest/ucd/NamesList.txt" -O NamesList.txt
+	$(WGET) "https://www.unicode.org/Public/17.0.0/ucd/NamesList.txt" -O NamesList.txt
 
 ListeDesNoms.txt:
 	$(WGET) "https://hapax.qc.ca/ListeNoms-16.0.0.txt" -O ListeDesNoms.txt
