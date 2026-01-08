@@ -1,5 +1,5 @@
-libuninameslist – A Library of Unicode names and annotation data
-================================================================
+# libuninameslist – A Library of Unicode names and annotation data
+
 [![Build status](https://ci.appveyor.com/api/projects/status/qseac73evm9leu0g?svg=true)](https://ci.appveyor.com/project/fontforge/libuninameslist) [![Coverity Scan Build Status](https://scan.coverity.com/projects/793/badge.svg?flat=1)](https://scan.coverity.com/projects/793)
 
 - [Description](#description)
@@ -9,10 +9,9 @@ libuninameslist – A Library of Unicode names and annotation data
 - [Added Python Wrapper](#added-python-wrapper)
 - [See Also](#see-also)
 
-Description
------------
+## Description
 
-This library is updated for Nameslist.txt ver17.0_Beta and ListeDesNoms.txt ver16.0
+This library is updated for Nameslist.txt ver17.0, and ListeNoms.txt ver17.0,
 and includes python wrapper 'uninameslist.py'
 
 For latest release, see: https://github.com/fontforge/libuninameslist/releases
@@ -27,10 +26,11 @@ characters.](http://www.unicode.org/Public/UNIDATA/NamesList.html) This library
 contains a compiled version of this file so that programs can access this data
 quickly and easily.
 
-ListeDesNoms.txt
-Is a seperate file which is translated from Nameslist.txt and was outdated for
+ListeNoms.txt
+Is a separate file which is translated from Nameslist.txt and was outdated for
 a period of time but was recently updated by a group of developers who have
-updated it up to version 14. Contributors to that file are listed in that file.
+updated it up to version 17. This requires a large amount of work by them and
+the Contributors to that file are listed in that file.
 
 These libraries contain very large (sparse) arrays with one entry for each
 unicode code point (U+0000–U+10FFFF). Each entry contains two strings, a name
@@ -127,8 +127,8 @@ This library will also be linked to the main libuninameslist so that it can
 be used through the main library (as lang=1) for functions 16 to 26.
 
 NOTE: If you ran 'make' after running './configure' earlier, you may need to
-run 'make clean' to clear-out the earlier libuninameslist library, which is
-built without knowledge of the additional library.
+run 'make clean' to clear-out the earlier 'libuninameslist' library, which is
+built differently without knowledge of the additional library.
 ```c
 $ make clean
 $ make
@@ -140,8 +140,25 @@ strip available, you can run:
 $ sudo make install-strip
 ```
 
-Installation and Build Instructions
------------------------------------
+For a more visual view of what is described above, it looks more like this:
+![](libs.gif)
+So, if built with `./configure`, then only libuninameslist is built, there is
+no libuninameslist-fr, and any function calls to other libraries return nothing.
+
+If built with `./configure --enable-frenchlib`, then both libraries are built.
+- Older programs(1,2,3) like FontForge (up to 20120713) or UMap can access
+libuninameslist or libuninameslist-fr using older access, or newer function calls.
+- Newer programs(4) can access all libraries through libuninameslist
+
+Last, but not least, do not mix and match. If you build libuninameslist with
+`./configure --enable-frenchlib`, you also need to install libuninameslist-fr
+since libuninameslist expects libuninameslist-fr to exist. If you build with
+`./configure`, then libuninameslist uses internal stub functions to return NULL
+and does not look for libuninameslist-fr; in this case, you can also have
+libuninameslist-fr installed too if you want (Program4 can access libuninameslist
+but cannot access libuninameslist-fr through libuninameslist).
+
+## Installation and Build Instructions
 
 Download a tagged release version from https://github.com/fontforge/libuninameslist/releases
 ```bash
@@ -179,8 +196,7 @@ $
 NOTE: Users who do not have autoconf and automake available will want to
 download the '-dist-' version found in the releases directory.
 
-Optional French Library
------------------------
+## Optional French Library
 
 The French library was build as a separate library to maintain backwards with
 older (...2012) versions of FontForge. If you want to add libuninameslist-fr,
@@ -213,8 +229,7 @@ on the French library, while at the same time older programs (like older
 FontForge) would load these independently (the dependency is to allow for
 substitutions if/where/when necessary).
 
-Added Python Wrapper
---------------------
+## Added Python Wrapper
 
 A 'uninameslist.py' Python wrapper is provided for users that want quick
 NamesList.txt access using python. To do this, you need to first build and
@@ -247,7 +262,7 @@ $ su
 $
 ```
 
-Note, some operating systems may need to use './configure --prefix=/usr'
+NOTE: Some operating systems may need to use './configure --prefix=/usr'
 
 The Python wrapper exposes the following library functions and symbols:
 
@@ -266,8 +281,7 @@ The Python wrapper exposes the following library functions and symbols:
 Blocks can be iterated over to yield all characters encoded in them.
 
 
-See Also
---------
+## See Also
 
 - [FontForge Users](https://sourceforge.net/p/fontforge/mailman/fontforge-users/) - Discussion area for users.
 - [FontForge](http://github.com/fontforge/fontforge/) - font editor application that this library was made for.
